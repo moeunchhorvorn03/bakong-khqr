@@ -1,6 +1,7 @@
+import type { Request, Response } from "express";
 import { BakongKHQR, khqrData, IndividualInfo } from "bakong-khqr";
 
-export const generateKhqr = async (_req, res) => {
+export const generateKhqr = async (_req: Request, res: Response) => {
     const expirationTimestamp = Date.now() + 5 * 60 * 1000;
 
     const order = {
@@ -9,13 +10,13 @@ export const generateKhqr = async (_req, res) => {
         status: "pending",
         currency: "USD",
         payment_method: "khqr",
-        paid: false
+        paid: false,
     };
 
     const optionalData = {
         currency: khqrData.currency.usd,
         amount: order.amount,
-        expirationTimestamp
+        expirationTimestamp,
     };
 
     const individualInfo = new IndividualInfo(

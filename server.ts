@@ -15,7 +15,7 @@ dotenv.config({
     path: [`.env.${env}`, ".env"],
     override: true,
     debug: true,
-    quiet: true
+    quiet: true,
 });
 
 app.use(cors());
@@ -25,7 +25,7 @@ app.use("/api", generateKhqrRoutes);
 app.use("/api", checkPaymentRoutes);
 
 app.get("/api/health", (_, res) => {
-    res.json({ status : "ok" });
+    res.json({ status: "ok" });
 });
 
 app.listen(port, () => {
